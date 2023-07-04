@@ -39,12 +39,20 @@ class Screen(tk.Tk):
 # ==================== Fields ==================== #
 
     def block(self, side, fill, expand):
+        """
+        Create the Frame widgets.
+        """
+
         _block = tk.Frame(self, bg=BG_WHITE)
         _block.pack(side=side, fill=fill, expand=expand, padx=20, pady=20)
 
         return _block
 
     def entry(self, text, disabled='normal'):
+        """
+        Create the Label and Entry widgets.
+        """
+
         _label = tk.Label(self.block_menu, text=text, bg=BG_WHITE, font=FONT_LABEL)
         _label.pack(anchor='w', padx=10, pady=5)
         _entry = tk.Entry(self.block_menu, width=30, font=FONT_ENTRY, highlightthickness=1)
@@ -54,6 +62,10 @@ class Screen(tk.Tk):
         return _entry
 
     def textbox(self):
+        """
+        Create the Text widgets.
+        """
+
         _textbox = tk.Text(self.block_script, font=FONT_TEXT, highlightthickness=1, wrap='word')
         _textbox.pack(fill='both', expand=True, padx=10, pady=10)
         _textbox.config(width=20, height=5)
@@ -61,6 +73,9 @@ class Screen(tk.Tk):
         return _textbox
     
     def table(self):
+        """
+        Create the Treeview widgets.
+        """
                 
         _scroll = tk.Scrollbar(self.block_table)
         _scroll.pack(side='right', fill='y')
@@ -77,19 +92,25 @@ class Screen(tk.Tk):
 # ================ Menu and Form ================ #
 
     def create_menu(self):
-            _menu = tk.Menu(self)
-            self.config(menu=_menu)
+        """
+        Create the Menu.
+        """
 
-            _menu.add_command(
-                label="Run",
-                command=lambda: run_script(
-                        conn=self.conn,
-                        script=self.textbox.get('1.0', 'end-1c'),
-                        table=self.table)
-                    )
+        _menu = tk.Menu(self)
+        self.config(menu=_menu)
+
+        _menu.add_command(
+            label="Run",
+            command=lambda: run_script(
+                    conn=self.conn,
+                    script=self.textbox.get('1.0', 'end-1c'),
+                    table=self.table)
+                )
 
     def conn_form(self):
-        # Connection form
+        """
+        Create the connection form.
+        """
 
         _data = open_json()
 
@@ -155,6 +176,10 @@ class Screen(tk.Tk):
 # ================== Functions ================== #
 
     def connect(self, db_type, host, database, user, password, db_path):
+        """
+        Update the json file and connect to the database.
+        """
+
         update_json(
             db_type=db_type,
             host=host,
