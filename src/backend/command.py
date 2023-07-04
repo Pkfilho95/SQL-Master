@@ -8,6 +8,9 @@ class Command:
         self.conn = conn
 
     def execute(self, script: str):
+        """
+        Execute the SQL script.
+        """
         
         _conn = self.conn.conn
         _cursor = _conn.cursor()
@@ -31,6 +34,10 @@ class Command:
             return 'Script executed successfully.'
     
     def _columns(self, table: str):
+        """
+        Get the name of the columns.
+        """
+        
         _cursor = self.conn.conn.cursor()
 
         if self.conn.db_type == 'mysql':

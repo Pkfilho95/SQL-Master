@@ -11,7 +11,6 @@ class Connection:
     """
 
     def __init__(self):
-
         self.conn = None
         self.error = None
 
@@ -19,6 +18,10 @@ class Connection:
         getattr(self, '_conn_%s' %self.db_type)()
     
     def _open_json(self):
+        """
+        Open the last_connection.json file and return the data.
+        """
+
         try:
             with open(JSON_PATH, 'r') as _file:
                 _data = json.load(_file)

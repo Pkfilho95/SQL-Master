@@ -7,6 +7,9 @@ from .command import Command
 from settings import JSON_PATH
 
 def open_json():
+    """
+    Function that opens the last_connection.json file and return the data.
+    """
     try:
         with open(JSON_PATH, 'r') as _file:
             _data = json.load(_file)
@@ -17,6 +20,10 @@ def open_json():
         raise error
     
 def update_json(db_type: str, host: str, database: str, user: str, password: str, db_path: str):
+    """
+    Function that updates the last_connection.json file.
+    """
+
     try:
         with open(JSON_PATH, 'r') as file:
             data = json.load(file)
@@ -35,6 +42,10 @@ def update_json(db_type: str, host: str, database: str, user: str, password: str
         json.dump(data, file, indent=4)
 
 def run_script(conn: Connection, script: str, table: Treeview):
+    """
+    Function that invokes the script execution.
+    """
+
     if script == "":
         messagebox.showerror('Error', 'Write a valid script.')
         return None

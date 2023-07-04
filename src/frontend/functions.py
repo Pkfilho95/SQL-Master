@@ -1,9 +1,10 @@
 from tkinter import Entry, Label
 
-def change_mode(mode: str):
-    pass
-
 def change_form(widget, option, data=None):
+    """
+    Function that modifies the connection form based on the selected option.
+    """
+    
     entry = [field for field in widget.winfo_children() if isinstance(field, Entry)]
 
     if data:
