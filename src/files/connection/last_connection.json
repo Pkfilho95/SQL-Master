@@ -1,8 +1,8 @@
 {
-    "db_type": "sqlite",
+    "db_type": "",
     "host": "",
     "database": "",
     "user": "",
     "password": "",
-    "db_path": "./database.db"
+    "db_path": ""
 }

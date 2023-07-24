@@ -17,6 +17,13 @@ class Connection:
         self._set_vars()
         getattr(self, '_conn_%s' %self.db_type)()
     
+    @property
+    def cursor(self):
+        """
+        Get the cursor.
+        """
+        return self.conn.cursor()
+    
     def _open_json(self):
         """
         Open the last_connection.json file and return the data.
